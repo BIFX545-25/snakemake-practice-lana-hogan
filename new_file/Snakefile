@@ -1,0 +1,10 @@
+# Snakefile
+
+rule create_greeting:
+    output: "greeting.txt"
+    shell: "echo 'Hello, Snakemake!' > {output}"
+
+rule add_timestamp:
+    input: "greeting.txt"
+    output: "greeting_with_time.txt"
+    shell: "date >> {input} && mv {input} {output}"

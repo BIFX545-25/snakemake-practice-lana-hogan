@@ -1,0 +1,10 @@
+# Snakefile
+
+rule create_dummy_fastq:
+    output: "dummy.fastq"
+    shell: "seq 10 > {output}" # Creates 10 lines of numbers
+
+rule count_lines:
+    input: "dummy.fastq"
+    output: "read_count.txt"
+    shell: "wc -l {input} | awk '{print $1}' > {output}"
